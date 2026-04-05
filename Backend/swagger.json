@@ -7,8 +7,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5000",
+      "url": "https://api-v8jd.onrender.com/",
       "description": "Local server"
+    },
+    {
+      "url": "http://localhost:5000",
+      "description": "Local server (optional)"
     }
   ],
   "components": {
@@ -30,7 +34,9 @@
       "post": {
         "summary": "Register a new user",
         "security": [],
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -38,18 +44,35 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": { "type": "string" },
-                  "email": { "type": "string" },
-                  "password": { "type": "string" },
-                  "role": { "type": "string", "enum": ["Viewer", "Analyst", "Admin"] }
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "Viewer",
+                      "Analyst",
+                      "Admin"
+                    ]
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "User created" },
-          "400": { "description": "Validation error or user exists" }
+          "201": {
+            "description": "User created"
+          },
+          "400": {
+            "description": "Validation error or user exists"
+          }
         }
       }
     },
@@ -57,7 +80,9 @@
       "post": {
         "summary": "Login user",
         "security": [],
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -65,34 +90,55 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": { "type": "string" },
-                  "password": { "type": "string" }
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Successful login, returns JWT token" },
-          "400": { "description": "Invalid credentials" }
+          "200": {
+            "description": "Successful login, returns JWT token"
+          },
+          "400": {
+            "description": "Invalid credentials"
+          }
         }
       }
     },
     "/api/users": {
       "get": {
         "summary": "Get all users (Admin only)",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "responses": {
-          "200": { "description": "List of users" }
+          "200": {
+            "description": "List of users"
+          }
         }
       }
     },
     "/api/users/{id}/role": {
       "put": {
         "summary": "Update user role (Admin only)",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "parameters": [
-          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -101,23 +147,36 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "role": { "type": "string" }
+                  "role": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Role updated" }
+          "200": {
+            "description": "Role updated"
+          }
         }
       }
     },
     "/api/users/{id}/status": {
       "put": {
         "summary": "Update user status (Admin only)",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "parameters": [
-          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -126,36 +185,88 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "status": { "type": "string", "enum": ["active", "inactive"] }
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "active",
+                      "inactive"
+                    ]
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Status updated" }
+          "200": {
+            "description": "Status updated"
+          }
         }
       }
     },
     "/api/records": {
       "get": {
         "summary": "Get records",
-        "tags": ["Records"],
+        "tags": [
+          "Records"
+        ],
         "parameters": [
-          { "in": "query", "name": "type", "schema": { "type": "string" } },
-          { "in": "query", "name": "category", "schema": { "type": "string" } },
-          { "in": "query", "name": "startDate", "schema": { "type": "string", "format": "date" } },
-          { "in": "query", "name": "endDate", "schema": { "type": "string", "format": "date" } },
-          { "in": "query", "name": "page", "schema": { "type": "integer" } },
-          { "in": "query", "name": "limit", "schema": { "type": "integer" } }
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "startDate",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "in": "query",
+            "name": "endDate",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of records matching criteria" }
+          "200": {
+            "description": "List of records matching criteria"
+          }
         }
       },
       "post": {
         "summary": "Create a new record (Admin only)",
-        "tags": ["Records"],
+        "tags": [
+          "Records"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -163,37 +274,74 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "amount": { "type": "number" },
-                  "type": { "type": "string", "enum": ["income", "expense"] },
-                  "category": { "type": "string" },
-                  "date": { "type": "string", "format": "date" },
-                  "notes": { "type": "string" }
+                  "amount": {
+                    "type": "number"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "income",
+                      "expense"
+                    ]
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Record created" }
+          "201": {
+            "description": "Record created"
+          }
         }
       }
     },
     "/api/records/{id}": {
       "get": {
         "summary": "Get single record",
-        "tags": ["Records"],
+        "tags": [
+          "Records"
+        ],
         "parameters": [
-          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "The record data" }
+          "200": {
+            "description": "The record data"
+          }
         }
       },
       "put": {
         "summary": "Update record (Admin only)",
-        "tags": ["Records"],
+        "tags": [
+          "Records"
+        ],
         "parameters": [
-          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -201,37 +349,69 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "amount": { "type": "number" },
-                  "type": { "type": "string", "enum": ["income", "expense"] },
-                  "category": { "type": "string" },
-                  "date": { "type": "string", "format": "date" },
-                  "notes": { "type": "string" }
+                  "amount": {
+                    "type": "number"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "income",
+                      "expense"
+                    ]
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Record updated" }
+          "200": {
+            "description": "Record updated"
+          }
         }
       },
       "delete": {
         "summary": "Delete record (Admin only)",
-        "tags": ["Records"],
+        "tags": [
+          "Records"
+        ],
         "parameters": [
-          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Record deleted" }
+          "200": {
+            "description": "Record deleted"
+          }
         }
       }
     },
     "/api/dashboard/summary": {
       "get": {
         "summary": "Get dashboard summary (Viewer, Analyst, Admin)",
-        "tags": ["Dashboard"],
+        "tags": [
+          "Dashboard"
+        ],
         "responses": {
-          "200": { "description": "Dashboard summary statistics" }
+          "200": {
+            "description": "Dashboard summary statistics"
+          }
         }
       }
     }
