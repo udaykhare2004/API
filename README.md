@@ -13,39 +13,6 @@ This is the backend REST API for a Role-Based Finance Dashboard system. It is bu
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Installation
-
-Clone this repository and navigate to the backend folder:
-```bash
-git clone https://github.com/udaykhare2004/API.git
-cd API/Backend
-```
-
-Install the required Node dependencies:
-```bash
-npm install
-```
-
-### 2. Environment Variables
-
-Create a `.env` file in the `Backend/` directory. You will need to provide your MongoDB URI and a secret key for JSON Web Tokens:
-```env
-MONGO_URI=mongodb+srv://<your-username>:<your-password>@cluster0.mongodb.net/API?retryWrites=true&w=majority
-JWT_SECRET=super_secret_jwt_key
-PORT=5000
-```
-
-### 3. Run the Server
-
-Start up the backend server:
-```bash
-npm start
-```
-The server will default to operating on `http://localhost:5000`.
-
----
 
 ## 📂 Project Structure
 
